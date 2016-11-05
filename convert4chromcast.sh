@@ -110,7 +110,7 @@ process_file() {
         echo "- audio: $INPUT_ACODEC ----> $OUTPUT_ACODEC"
 	
 	if [ $playable == "true" ]; then
-                echo "- file should be playable by Chromecast!"
+                echo "- file seems alredy playable on Chromecast!"
 	else
 		echo "- start convertion"
 		$FFMPEG -loglevel error -stats -i "$FILENAME" -map 0 -scodec copy -vcodec $OUTPUT_VCODEC -acodec $OUTPUT_ACODEC -f $OUTPUT_GFORMAT "$FILENAME.chromecast.$OUTPUT_EXTENSION" && on_success "$FILENAME"  || on_failure "$FILENAME.chromecast.$OUTPUT_EXTENSION" 
